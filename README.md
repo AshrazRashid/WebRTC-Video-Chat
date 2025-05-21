@@ -62,11 +62,71 @@ If everything is set up correctly, you should see your new app running in the An
 
 This is one way to run your app — you can also build it directly from Android Studio or Xcode.
 
+## Running the App on a Real Device
+
+### Prerequisites
+
+- Ensure your device and computer are on the same network.
+- For Android, enable USB debugging in Developer Options.
+- For iOS, ensure you have the correct permissions.
+
+### Steps to Run on a Real Device
+
+1. **Start the Metro Bundler:**
+
+   ```sh
+   npm start
+   ```
+
+2. **Run the app on your device:**
+
+   - **Android:**
+     ```sh
+     npm run android
+     ```
+   - **iOS:**
+     ```sh
+     npm run ios
+     ```
+
+3. **Open the Developer Menu on your device:**
+
+   - **Android:** Shake the device or run:
+     ```sh
+     adb shell input keyevent 82
+     ```
+   - **iOS:** Shake the device or press `Cmd + D` (if connected to a Mac).
+
+4. **Ensure the server is running:**
+
+   - Navigate to the server directory:
+     ```sh
+     cd server
+     ```
+   - Install dependencies if not already done:
+     ```sh
+     npm install
+     ```
+   - Start the server:
+     ```sh
+     node server.js
+     ```
+
+5. **Check the server IP address:**
+
+   - Ensure the IP address in `App.tsx` matches your computer's local IP.
+   - Update the IP if necessary and restart the Metro bundler and server.
+
+6. **Troubleshooting:**
+   - If the app fails to connect to the server, ensure both the device and computer are on the same network.
+   - Check for any firewall issues blocking port 3000.
+   - Verify the server is running and accessible from the device's browser.
+
 ## Step 3: Modify your app
 
 Now that you have successfully run the app, let's make changes!
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
 When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
 

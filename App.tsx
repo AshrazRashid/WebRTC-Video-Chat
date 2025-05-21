@@ -13,6 +13,7 @@ import {
   MediaStream,
 } from 'react-native-webrtc';
 import io from 'socket.io-client';
+import {SERVER_IP} from '@env';
 
 const configuration = {
   iceServers: [
@@ -33,7 +34,7 @@ const App = () => {
 
   useEffect(() => {
     // Initialize WebSocket connection
-    const newSocket = io('http://192.168.100.11:3000', {
+    const newSocket = io(`http://${SERVER_IP}:3000`, {
       transports: ['websocket'],
       reconnection: true,
       reconnectionAttempts: 5,
@@ -74,8 +75,6 @@ const App = () => {
     // Cleanup
     return () => {
       if (pc) {
-        pc.removeEventListener('icecandidate', () => {});
-        pc.removeEventListener('track', () => {});
         pc.close();
       }
       if (newSocket) {
@@ -97,7 +96,6 @@ const App = () => {
           height: {min: 480, ideal: 720, max: 1080},
           frameRate: {min: 15, ideal: 30, max: 60},
           facingMode: 'user',
-          aspectRatio: 1.333333,
         },
       });
 
