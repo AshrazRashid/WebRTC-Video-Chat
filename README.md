@@ -1,74 +1,94 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# WebRTC Video Chat
 
-# Getting Started
+A React Native application for video chat using WebRTC technology.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Prerequisites
 
-## Step 1: Start Metro
+- Node.js (v14 or higher)
+- React Native development environment set up
+- Android Studio (for Android development)
+- Xcode (for iOS development, macOS only)
+- Physical device or emulator with camera and microphone
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
-
-```sh
-# Using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Build and run your app
-
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+## Required Permissions
 
 ### Android
 
-```sh
-# Using npm
-npm run android
+The app requires the following permissions:
 
-# OR using Yarn
-yarn android
-```
+- Camera
+- Microphone
+- Internet
+- Network State
+- Bluetooth (for audio routing)
+- Local Network
 
 ### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+The app requires the following permissions:
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+- Camera
+- Microphone
+- Local Network
 
-```sh
-bundle install
-```
+## Getting Started
 
-Then, and every time you update your native dependencies, run:
+1. **Clone the repository:**
 
-```sh
-bundle exec pod install
-```
+   ```sh
+   git clone [your-repo-url]
+   cd WebRTCPracticeNative
+   ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+2. **Install dependencies:**
 
-```sh
-# Using npm
-npm run ios
+   ```sh
+   npm install
+   ```
 
-# OR using Yarn
-yarn ios
-```
+3. **Set up environment variables:**
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+   - Create a `.env` file in the root directory:
+     ```
+     SERVER_IP=your_local_ip
+     SERVER_PORT=8080
+     ```
+   - Create a `.env` file in the server directory:
+     ```
+     PORT=8080
+     ```
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+4. **Start the server:**
 
-## Running the App on a Real Device
+   ```sh
+   cd server
+   npm install
+   node server.js
+   ```
+
+5. **Start the Metro bundler:**
+
+   ```sh
+   npm start
+   ```
+
+6. **Run the app:**
+   - For Android:
+     ```sh
+     npm run android
+     ```
+   - For iOS:
+     ```sh
+     npm run ios
+     ```
+
+## Running on a Real Device
 
 ### Prerequisites
 
-- Ensure your device and computer are on the same network.
-- For Android, enable USB debugging in Developer Options.
-- For iOS, ensure you have the correct permissions.
+- Ensure your device and computer are on the same network
+- For Android, enable USB debugging in Developer Options
+- For iOS, ensure you have the correct permissions
 
 ### Steps to Run on a Real Device
 
@@ -95,7 +115,7 @@ This is one way to run your app — you can also build it directly from Android 
      ```sh
      adb shell input keyevent 82
      ```
-   - **iOS:** Shake the device or press `Cmd + D` (if connected to a Mac).
+   - **iOS:** Shake the device or press `Cmd + D` (if connected to a Mac)
 
 4. **Ensure the server is running:**
 
@@ -114,44 +134,38 @@ This is one way to run your app — you can also build it directly from Android 
 
 5. **Check the server IP address:**
 
-   - Ensure the IP address in `App.tsx` matches your computer's local IP.
-   - Update the IP if necessary and restart the Metro bundler and server.
+   - Ensure the IP address in `.env` matches your computer's local IP
+   - Update the IP if necessary and restart the Metro bundler and server
 
 6. **Troubleshooting:**
-   - If the app fails to connect to the server, ensure both the device and computer are on the same network.
-   - Check for any firewall issues blocking port 3000.
-   - Verify the server is running and accessible from the device's browser.
+   - If the app fails to connect to the server, ensure both the device and computer are on the same network
+   - Check for any firewall issues blocking port 8080
+   - Verify the server is running and accessible from the device's browser
+   - Ensure all required permissions are granted on the device
 
-## Step 3: Modify your app
+## Features
 
-Now that you have successfully run the app, let's make changes!
+- Real-time video and audio communication
+- Camera and microphone access
+- Local network WebRTC connections
+- Cross-platform support (Android and iOS)
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+## Dependencies
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+- react-native-webrtc
+- socket.io-client
+- react-native-dotenv
+- express (server)
+- socket.io (server)
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+## Contributing
 
-## Congratulations! :tada:
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-You've successfully run and modified your React Native App. :partying_face:
+## License
 
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+This project is licensed under the MIT License - see the LICENSE file for details.
